@@ -585,11 +585,6 @@ theme.functions.bannerFromPanelFunctions = function(ref){
             }
             
             $(this).closest('li').remove();
-            // if($(this).closest('li')[0] != undefined){                    
-                
-            // }else{
-            //     $(this).remove();
-            // }
         }     
 
         if(trigger.includes('[banner-texto]')){
@@ -634,7 +629,8 @@ theme.functions.bannerFromPanelFunctions = function(ref){
             if($('#theme_categorySlider').length == 0){
                 $('<div id="theme_categorySlider"><div class="slides"></div></div>').prependTo('#corpo > .conteiner');
             }
-            $(this).closest('li').appendTo('#theme_categorySlider > .slides'); 
+            $(this).closest('li').clone().appendTo('#theme_categorySlider > .slides'); 
+            $(this).remove();
         }
 
         //NEWSLETTER COVER
@@ -678,6 +674,8 @@ theme.functions.bannerFromPanelFunctions = function(ref){
             if($('#theme_testimonialSlider .slides').length > 0){
                 $('#theme_testimonialSlider .slides').apx_slick(theme.settings.sliders.theme_testimonialSlider);
             }
+
+            $('.secao-banners .cheio img').length == 0 ? $('.secao-banners .cheio').remove() : false; 
         }
 
         if(!trigger.includes('[mobile]') && theme.isMobile){
@@ -687,7 +685,7 @@ theme.functions.bannerFromPanelFunctions = function(ref){
             $(this).closest('li').remove();                        
         }
 
-        $('.secao-banners .cheio img').length == 0 ? $('.secao-banners .cheio').remove() : false;    
+           
        
     });
 };
